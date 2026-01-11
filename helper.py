@@ -8,7 +8,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import os
 
-import nltk, os
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+
 
 nltk.data.path.append(os.path.join(os.path.expanduser("~"), "nltk_data"))
 
