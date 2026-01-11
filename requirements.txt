@@ -1,0 +1,6 @@
+streamlitg
+sklearn
+nltk
+bs4
+distance
+re
