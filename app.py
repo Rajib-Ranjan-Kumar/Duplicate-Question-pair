@@ -3,8 +3,15 @@ import helper
 import pickle
 import numpy as np
 
-# load trained model
-model = pickle.load(open(r"C:\ds\PROJECT\QUORA_QUESTION_PAIR\rf_model.pkl", 'rb'))
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+
+
+
+with open(os.path.join(BASE_DIR, "rf_model.pkl"), "rb") as f:
+    model = pickle.load(f)
+
 
 st.header('Duplicate Question Pairs')
 

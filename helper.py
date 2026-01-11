@@ -6,17 +6,23 @@ import string
 from nltk.corpus import stopwords
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
+import os
 
+import nltk, os
 
-import nltk
-nltk.download('stopwords')
+nltk.data.path.append(os.path.join(os.path.expanduser("~"), "nltk_data"))
 
+try:
+    nltk.data.find("corpora/stopwords")
+except LookupError:
+    nltk.download("stopwords")
 
-with open(r"C:\ds\PROJECT\QUORA_QUESTION_PAIR\cv_model.pkl", "rb") as f:
+BASE_DIR = os.path.dirname(__file__)
+
+with open(os.path.join(BASE_DIR, "cv_model.pkl"), "rb") as f:
     cv = pickle.load(f)
 
-
-with open(r"C:\ds\PROJECT\QUORA_QUESTION_PAIR\tfidf_model.pkl", "rb") as f:
+with open(os.path.join(BASE_DIR, "tfidf_model.pkl"), "rb") as f:
     tfidf = pickle.load(f)
 
 stop_words = set(stopwords.words('english'))
@@ -196,7 +202,6 @@ import difflib
 from nltk.corpus import stopwords
 from nltk.util import ngrams
 
-stop_words = set(stopwords.words('english'))
 def extract_features(text1, text2):
 
     # --------------------
